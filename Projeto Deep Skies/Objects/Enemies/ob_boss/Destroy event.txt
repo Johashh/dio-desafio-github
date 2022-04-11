@@ -1,4 +1,4 @@
-**/// @description Morrendo**
+/// @description Morrendo
 
 var yy = (y - sprite_yoffset) + (sprite_height/2)
 var e = instance_create_layer(x, yy, "Enemies", obj_explosion);

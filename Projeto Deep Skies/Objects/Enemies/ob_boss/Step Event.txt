@@ -1,16 +1,15 @@
-**/// @description Movimento e Comportamendo**
-
+/// @description Movimento e Comportamendo
 
 
 rectx = (currenthp/hpmax) * 400;
 
-**// Matando o boss**
+// Matando o boss
 if (currenthp < 1)
 {
 	instance_destroy();
 }
 
-**// Travando o boss**
+// Travando o boss
 if (y >= 150 && natela == false)
 {
 	vspeed = 0;
@@ -18,13 +17,13 @@ if (y >= 150 && natela == false)
 	audio_play_sound(snd_boss, 3, true);
 }
 
-**// Ativando delay**
+// Ativando delay
 if (instance_exists(obj_boss) && natela == true) delay++;
 
-**// Ativando estados**
+// Ativando estados
 if (estado == 0 && natela == true)
 {
-	**// Movendo**
+	// Movendo
 	if (hspeed == 0) hspeed = 2;
 	if (x != clamp(x, 150, 650))
 	{

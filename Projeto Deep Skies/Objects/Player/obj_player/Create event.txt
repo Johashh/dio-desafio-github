@@ -1,4 +1,4 @@
-**/// @description Iniciando variáveis do player**
+/// @description Iniciando variáveis do player
 
 vel = 4;
 global.maxhp = 3;

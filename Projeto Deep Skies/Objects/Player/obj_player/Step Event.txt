@@ -1,14 +1,14 @@
-**/// @description Movimentação do player**
-**//Impedindo que o player saia da tela**
+/// @description Movimentação do player
+//Impedindo que o player saia da tela
 x = clamp(x, 40, room_width-40);
 y = clamp(y, 40, room_height-40);
 
-**//Status maximo do player**
+//Status maximo do player
 
 if (global.life > 5) global.life = 5;
 if (global.maxshd > 5) global.maxshd = 5;
 
-**//Comandos básicos**
+//Comandos básicos
 
 var esq = keyboard_check(ord("A"));		// esquerda
 var dir = keyboard_check(ord("D"));		// direita
@@ -17,33 +17,33 @@ var baixo = keyboard_check(ord("S"));		// baixo
 var shoot = keyboard_check_pressed(vk_space);     //atirar
 var shield = keyboard_check_pressed(ord("E"));      //escudo
 
-**// Criando o escudo**
+// Criando o escudo
 if (shield && global.shield_charge > 0) 
 {
 	instance_create_layer(x, y, "instances", obj_shield);
 	global.shield_charge--;
 }
 
-**//Atirando**
+//Atirando
 
 if (shoot)
 {
 	audio_play_sound(snd_player_shoot, 10, false);
 }
 
-**// Movimento Horizontal**
-// Checando o lado
+/* Movimento Horizontal
+   Checando o lado */
 var velh = (dir-esq) * vel;
 // Aplicando velocidade
 x += velh;
 
-**// Movimento vertical**
-// Checando cima/baixo
+/* Movimento vertical
+   Checando cima/baixo */
 var velv = (baixo - cima) * vel;
 // Aplicando velocidade
 y += velv;
 
-**// Criando tiro**
+// Criando tiro
 if (shoot_level == 1)
 {
 	if(shoot)
@@ -51,7 +51,7 @@ if (shoot_level == 1)
 		instance_create_layer(x, y,"instances",obj_shoot1);
 	}
 } 
-**// Criando tiro2**
+// Criando tiro2
 else if (shoot_level == 2)
 {
 	if(shoot)
@@ -62,7 +62,7 @@ else if (shoot_level == 2)
 		t.hspeed = -4;
 	}
 }
-**// Crianto tiro3**
+// Crianto tiro3
 else if (shoot_level == 3)
 {
 	if (shoot)
@@ -75,7 +75,7 @@ else if (shoot_level == 3)
 	}
 }
 
-**//Criando tiro4**
+//Criando tiro4
 else if (shoot_level == 4)
 {
 	if (shoot)
@@ -91,7 +91,7 @@ else if (shoot_level == 4)
 	}
 }
 
-**//Criando tiro5**
+//Criando tiro5
 else if (shoot_level >= 5)
 {
 	if (shoot) 

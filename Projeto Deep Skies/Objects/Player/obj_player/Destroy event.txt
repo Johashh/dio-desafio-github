@@ -1,4 +1,4 @@
-**/// @description Animação de explosão**
+/// @description Animação de explosão
 
 audio_play_sound(snd_player_dead, 5, false);
 
