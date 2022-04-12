@@ -1,0 +1,87 @@
+Ao importar uma sprite que contém várias imagens no mesmo arquivo, renomeie o 
+arquivo colocando ".stripx" no final, onde x é o número de imagens contidas 
+no arquivo. Assim você criará uma sprite com as imagens separadas
+
+O comando CHOOSE(arg1, arg2, arg3) nos permite escolher um dentre os argumentos dispostos. O retorno
+depende do tipo de argumento usado.
+exemplo:
+choose(1, 3, 5, 6); // inteiros
+choose("oi", "xau); // strings
+choose(spr1, spr2, spr3) // sprites
+
+Com o evento Other>intersect Boundary (intersectar fronteira), damos uma ação para um objeto que sera
+realizada quando ele chegar neste limite.
+Para fazer um objeto voltar na mesma direção que ele veio:
+speed *= -1;
+
+Ao criar o evento DRAW (não DRAW GUI) que possui sprite, você está apagando aquele sprite. Para evitar
+isso, use o comando:
+draw_self(); // me desenhar
+
+Colocando uma camada de si mesmo de um sprite:
+gpu_set_blendmolde(bm_add) // após usar esse comando, você estará aplicando este efeito em todo o jogo
+							  e isto irá sobrescrever toda a tela. Entao usemos:
+gpu_set_blendmolde(bm_normal) // evitando que o comando acima pinte toda a tela. Esses comandos 
+								 funcionam como chaves, e o que estiver dentro deles será alterado.
+								 
+EXEMPLO: 
+gpu_set_blendmode(bm_add);
+
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale+1, image_yscale+.5, image_angle, cor, .5);
+
+gpu_set_blendmode(bm_normal);
+
+SPRITE_YOFFSET
+Com este comando vc obtem o espaço necessario para chegar no pivô da sprite. Fazendo y-sprite_yoffset
+você está voltando o valor para o topo do espaço da sprite (não o topo da imagem, mas do quadrado onde
+está a sprite). 
+
+SPRITE_HEIGHT
+É a altura completa da sprite (não da imagem apenas, mas do quadrado todo). Usando comando anterior vc 
+move seu y para o topo, e para achar o meio da imagem, some a metade da altura da sprite:
+
+EXEMPLO:
+var yy = (y - sprite_yoffset) + (sprite_height/2)
+
+Isto é util quando você tem uma sprite com pivô não centralizado e chama uma outra sprite cujo pivô está no centro
+
+DRAW_RECTANGLE_COLOR
+Este comando permite desenhar um retângulo na tela:
+draw_rectangle_color(x1, y1, x2, y2, cor 1, 2, 3, 4, outline)
+o x1/y1 é onde o retângulo inicia na room.
+o x2/y2 é onde o teângulo termina na room.
+cor define a cor do retângulo.
+outline define o preenchimento (true, false)
+
+
+DRAW_SET_VALIGN ou DRAW_SET_HALING
+permite alinhar ao posicionamento que escolher:
+Vertical (Topo, meio e fundo)
+Horizontl (esquerda, meio e direita)
+
+EXEMPLO
+draw_set_valign(fa_middle); alinha no meio
+draw_set_halign(fa_center); alinha no meio
+FA significa font align ou alinhar fonte
+
+IMAGE_BLEND
+Este comando pega a cor original da imgaem e mistura c o argumento
+
+EXEMPLO:
+image_blend = c_navy;
+
+MEETING_POSITION
+Este comando irá verificar se o argumento está encontrando as coordenadas do objeto
+
+EXEMPLO:
+if(position_meeting(mouse_X, mouse_y, self)
+Aqui vamos ver quando o player passar o mouse em cima do botao (por isso usamos self
+no final).
+
+Quando se muda a room, o game maker destroi todos os objetos da room da qual ele está saindo
+para iniciar a nova. Assim o objeto transition deve ser persistente, ou seja, ele n vai ser
+destruido na troca de rooms e o efeito de clarear n vai ser mais rapido doq o efeito de escurecer
+
+Nas propriedades da room, ao habilitar o viewports vc tem acesso a outras personalizações da aquela
+room. As propriedades da camera, por ex, servem pra determinar o quanto da room o player vai ver ao jogar.
+as propriedades do viewport determina o tamanho da janela.
