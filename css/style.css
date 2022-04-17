@@ -1,0 +1,30 @@
+body{
+    font: 20px arial, sans-serif;
+}
+
+.navbar{
+    background-color: rgba(36, 35, 35, 0.788);
+}
+
+.cartas{
+    background-color: antiquewhite;
+    color: black;
+}
+
+.margin{
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+
+.reliquias{
+    background-color: rgba(149, 221, 149, 0.836);
+}
+
+.descricao-recompensa{
+    padding-top: 20px;
+}
+
+.bg-footer{
+    background-color: black;
+    color: white;
+}
